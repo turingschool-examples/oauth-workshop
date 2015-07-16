@@ -1,3 +1,8 @@
 <h1>Welcome!</h1>
 
-<%= link_to "login", login_path %>
+<% if current_user %>
+  <p>hello, <%= current_user.name %></p>
+<% else %>
+  <%= link_to "login", login_path %>
+<% end %>
+
