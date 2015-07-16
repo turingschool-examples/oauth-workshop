@@ -2,6 +2,7 @@
 
 <% if current_user %>
   <p>hello, <%= current_user.name %></p>
+  <%= link_to "logout", logout_path %>
 <% else %>
   <%= link_to "login", login_path %>
 <% end %>
