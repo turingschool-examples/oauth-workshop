@@ -13,7 +13,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omniauth-twitter'
 gem 'twitter'
 
+
+gem "webmock", group: :test
 group :development, :test do
+  gem "vcr"
   gem "capybara"
   gem 'byebug'
   gem 'web-console', '~> 2.0'

@@ -12,7 +12,7 @@
 <h3>Your Twitter Timeline!</h3>
 <ul>
 <% current_user.twitter_timeline.each do |tweet| %>
-<li>
+<li class="tweet">
   <p><%= distance_of_time_in_words(Time.now, tweet.created_at) %> ago, <%= tweet.user.screen_name %> said:</p>
   <p><%= tweet.text %></p>
 </li>

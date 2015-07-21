@@ -7,12 +7,15 @@ class UserLogsInWithTwitterTest < ActionDispatch::IntegrationTest
   end
 
   test "logging in" do
-    visit "/"
-    assert_equal 200, page.status_code
-    click_link "login"
-    assert_equal "/", current_path
-    assert page.has_content?("Horace")
-    assert page.has_link?("logout")
+    VCR.use_cassette("user-timeline", match_requests_on: [:method, :uri]) do
+      visit "/"
+      assert_equal 200, page.status_code
+      click_link "login"
+      assert_equal "/", current_path
+      assert page.has_content?("Horace")
+      assert page.has_link?("logout")
+      assert page.has_css?(".tweet")
+    end
   end
 
   def stub_omniauth
